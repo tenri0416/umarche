@@ -19,13 +19,23 @@ class LifeCycleTestController extends Controller
         // $asmple = new Sample($message);
         // $asmple->run();
 
-        //サービスコンテナを使うパターン
+        //サービスコンテナを使うパターン sampleという名前で格納
         app()->bind('sample', Sample::class);
-        $sample = app()->make('sample');
+        $sample = app()->make('sample'); //sampleという名前で取り出す
 
         $sample->run();
         //dd(app())で中身を確認できる　
         dd($test, app());
+    }
+    public function showServiceProviderTest()
+    {
+        $encrypt = app()->make('encrypter');
+        $password = $encrypt->encrypt('pantu');
+
+
+        $sample = app()->make('serviceProviderTest');
+
+        dd($sample, $password, $encrypt->decrypt($password));
     }
 }
 class Sample
