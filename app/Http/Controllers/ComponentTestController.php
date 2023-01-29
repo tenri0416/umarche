@@ -15,4 +15,8 @@ class ComponentTestController extends Controller
     {
         return view('tests.component-test2');
     }
+    public function showComponent3()
+    {
+        return view('tests.component-test3');
+    }
 }
