@@ -41,6 +41,7 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+        //config/auth.phpで定義したものと合わせる必要がある
         if ($this->routeIs('owner.*')) {
             $guard = 'owner';
         } elseif ($this->routeIs('admin.*')) {
