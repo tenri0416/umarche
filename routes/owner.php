@@ -24,11 +24,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('owner.welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('owner.dashboard');
 })->middleware(['auth:owners'])->name('dashboard');
 //owneresの権限があるとログインできる
 

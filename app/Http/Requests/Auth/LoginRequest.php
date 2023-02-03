@@ -43,11 +43,11 @@ class LoginRequest extends FormRequest
 
         //config/auth.phpで定義したものと合わせる必要がある
         if ($this->routeIs('owner.*')) {
-            $guard = 'owner';
+            $guard = 'owners';
         } elseif ($this->routeIs('admin.*')) {
             $guard = 'admin';
         } elseif ($this->routeIs('user.*')) {
-            $guard = 'user';
+            $guard = 'users';
         }
 
         if (!Auth::guard($guard)->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
