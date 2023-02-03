@@ -23,9 +23,9 @@ class Authenticate extends Middleware
             if (Route::is('owner.*')) { //*の意味はowner/以降のURLならなんでもOK
                 return route($this->owner_route);
             } elseif (Route::is('admin.*')) { //*の意味 admi/以降のURLならなんでもOK
-                return route($this->owner_route);
+                return route($this->admin_route);
             } elseif (Route::is('user.*')) { //*の意味はuser/以降のURLならなんでもOK
-                return route($this->owner_route);
+                return route($this->user_route);
             }
         }
     }
