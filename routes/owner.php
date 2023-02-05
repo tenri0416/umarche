@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('owner.welcome');
 });
 
-Route::get('/dashboard', function () {
+Route::get('dashboard', function () {
     return view('owner.dashboard');
 })->middleware(['auth:owners'])->name('dashboard');
 //owneresの権限があるとログインできる
@@ -38,7 +38,7 @@ Route::middleware('auth:owners')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
+//auth.php部分
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
@@ -83,5 +83,6 @@ Route::middleware('auth:owners')->group(function () {
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
+
+        ->name('logout');;
 });

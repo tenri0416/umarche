@@ -18,10 +18,10 @@
             @if(auth('admin')->user())
                @include('layouts.admin-navigation')
             @elseif(auth('owners')->user())
-               @include('layout.owner-navigation')
-            @elseif(auth('user')->user())
+               @include('layouts.owner-navigation')
+            @elseif(auth('users')->user())
                @include('layouts.user-navigation')
-
+            @endif
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">

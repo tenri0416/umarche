@@ -63,6 +63,12 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth:admin')->group(function () {
+
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard')->name('dashboard');
+    });
+
+
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
         ->name('verification.notice');
 
@@ -82,5 +88,6 @@ Route::middleware('auth:admin')->group(function () {
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+
         ->name('logout');
 });
