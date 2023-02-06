@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Owner; // Eloauent エロくアント
+use Illuminate\Support\Facades\DB;
 
 class OwnersController extends Controller
 {
@@ -20,7 +22,17 @@ class OwnersController extends Controller
      */
     public function index()
     {
-        dd('オーナー一覧です');
+        $e_all = Owner::all();
+        $db_get = DB::table('owners')->select('name')->get();
+        $db_first = DB::table('owners')->select('name')->first();
+
+
+        $c_test = collect([
+            'name' => 'テスト'
+        ]);
+
+
+        dd($e_all, $db_get, $db_first, $c_test);
     }
 
     /**
