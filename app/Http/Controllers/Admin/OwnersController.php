@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Owner; // Eloauent エロくアント
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class OwnersController extends Controller
 {
@@ -22,17 +23,23 @@ class OwnersController extends Controller
      */
     public function index()
     {
+        $date_now = Carbon::now();
+        $date_parse = Carbon::parse(now());
+        echo $date_now->year;
+        echo $date_parse;
+
         $e_all = Owner::all();
-        $db_get = DB::table('owners')->select('name')->get();
-        $db_first = DB::table('owners')->select('name')->first();
+        $q_get = DB::table('owners')->select('name', 'created_at')->get();
+        // $db_first = DB::table('owners')->select('name')->first();
 
 
-        $c_test = collect([
-            'name' => 'テスト'
-        ]);
+        // $c_test = collect([
+        //     'name' => 'テスト'
+        // ]);
 
 
-        dd($e_all, $db_get, $db_first, $c_test);
+        // dd($e_all, $db_get, $db_first, $c_test);
+        return view('admin.owners.index', compact('e_all', 'q_get'));
     }
 
     /**
