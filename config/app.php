@@ -14,7 +14,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-
+    //第一引数がなければ第二引数を使う
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
