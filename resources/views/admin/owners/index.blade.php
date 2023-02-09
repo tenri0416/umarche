@@ -36,23 +36,24 @@
                                                 class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                                 作成日</th>
                                             <th
-                                                class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">
+                                                class="px-4 py-3  title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($owners as $onwer)
+                                        @foreach ($owners as $owner)
                                             <tr>
-                                                <td class="px-4 py-3"> {{ $onwer->name }}</td>
-                                                <td class="px-4 py-3"> {{ $onwer->email }}</td>
-                                                <td class="px-4 py-3"> {{ $onwer->created_at }}</td>
+                                                <td class="px-4 py-3"> {{ $owner->name }}</td>
+                                                <td class="px-4 py-3"> {{ $owner->email }}</td>
+                                                <td class="px-4 py-3"> {{ $owner->created_at }}</td>
 
-                                                <td class="w-10 text-center">
-                                                    <input name="plan" type="radio">
+                                                <td class="px-4 py-3">
+                                                    <button
+                                                        onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'"
+                                                        class=" text-white bg-blue-300 border-0 py-2 px-4 focus:outline-none hover:bg-blue-500 rounded ">編集</button>
                                                 </td>
                                             </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
