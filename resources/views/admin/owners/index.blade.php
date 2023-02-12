@@ -15,7 +15,7 @@
                     <section class="text-gray-600 body-font">
                         <div class="container px-5 mx-auto">
 
-                            <x-flash-message status="info" />
+                            <x-flash-message status="session('status')" />
 
                             <div class="flex justify-end mb-4">
                                 <button onclick="location.href='{{ route('admin.owners.create') }}' "
