@@ -24,14 +24,32 @@ class OwnerSeeder extends Seeder
                 'created_at' => '2021/01/01 11:11:11'
             ],
             [
-                'name' => 'test',
+                'name' => 'test2',
                 'email' => 'test2@test',
                 'password' => Hash::make('password123'), //パスワードを暗号化
                 'created_at' => '2021/01/01 11:11:11'
             ],
             [
-                'name' => 'test',
+                'name' => 'test3',
                 'email' => 'test3@test',
+                'password' => Hash::make('password123'), //パスワードを暗号化
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'test4',
+                'email' => 'test4@test',
+                'password' => Hash::make('password123'), //パスワードを暗号化
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'test5',
+                'email' => 'test5@test',
+                'password' => Hash::make('password123'), //パスワードを暗号化
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'test6',
+                'email' => 'test6@test',
                 'password' => Hash::make('password123'), //パスワードを暗号化
                 'created_at' => '2021/01/01 11:11:11'
             ],
