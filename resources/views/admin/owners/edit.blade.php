@@ -55,32 +55,41 @@
                                         </div>
                                         <div class="p-2 w-1/2 mx-auto">
                                             <div class="relative">
-                                                <label for="password"
-                                                    class="leading-7 text-sm text-gray-600">パスワード</label>
-                                                <input type="password" id="paaaword" name="password" required
-                                                    class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                                <label for="shop" class="leading-7 text-sm text-gray-600">店名</label>
+                                                <div
+                                                    class="bg-gray-100 bg-opacity-50 rounded focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                                    {{ $owner->shop->name }}
+
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="p-2 w-1/2 mx-auto">
-                                            <div class="relative">
-                                                <label for="password_confirmation"
-                                                    class="leading-7 text-sm text-gray-600">パスワード確認</label>
-                                                <input type="password" id="password_confirmation"
-                                                    name="password_confirmation" required
-                                                    class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                            <div class="p-2 w-1/2 mx-auto">
+                                                <div class="relative">
+                                                    <label for="password"
+                                                        class="leading-7 text-sm text-gray-600">パスワード</label>
+                                                    <input type="password" id="paaaword" name="password" required
+                                                        class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                                </div>
                                             </div>
+                                            <div class="p-2 w-1/2 mx-auto">
+                                                <div class="relative">
+                                                    <label for="password_confirmation"
+                                                        class="leading-7 text-sm text-gray-600">パスワード確認</label>
+                                                    <input type="password" id="password_confirmation"
+                                                        name="password_confirmation" required
+                                                        class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out ">
+                                                </div>
+                                            </div>
+                                            <div class="p-2 flex justify-center mt-4">
+
+                                                <button
+                                                    type="button"onclick="location.href='{{ route('admin.owners.index') }}' "
+                                                    class=" text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg w-50">戻る</button>
+
+                                                <button type="submit"
+                                                    class=" text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg w-50">更新する</button>
+                                            </div>
+
                                         </div>
-                                        <div class="p-2 flex justify-center mt-4">
-
-                                            <button
-                                                type="button"onclick="location.href='{{ route('admin.owners.index') }}' "
-                                                class=" text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg w-50">戻る</button>
-
-                                            <button type="submit"
-                                                class=" text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg w-50">更新する</button>
-                                        </div>
-
-                                    </div>
                                 </form>
                             </div>
                         </div>
