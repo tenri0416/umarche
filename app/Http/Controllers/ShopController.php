@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -34,10 +35,17 @@ class ShopController extends Controller
     }
     public function edit($id)
     {
-        dd(Shop::findOrFail($id));
-        // dd(Shop::where('owner_id', $id));
+        $shop = Shop::findOrFail($id);
+        return view('owner.shops.edit', compact('shop'));
     }
-    public function update()
+    public function update(Request $request, $id)
     {
+        $imageFile = $request->image; //一時保存
+        if (!is_null($imageFile) && $imageFile->isValid()) {
+            //画像が設置されていない場合　かつ 値がしっかり取れている場合なら
+            Storage::putFile('public/shops', $imageFile);
+            //のpublic/storage/shopsファルダが作られて自動で名前が付けられる
+        }
+        return redirect()->route('owner.shops.index');
     }
 }
