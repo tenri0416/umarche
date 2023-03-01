@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Storage;
+use InterventionImage; //InterventionImageリサイズ
 
 class ShopController extends Controller
 {
@@ -29,6 +30,7 @@ class ShopController extends Controller
     }
     public function index()
     {
+
         // $ownerId = Auth::id(); //ログインしているid
         $shops = Shop::where('owner_id', Auth::id())->get();
         return view('owner.shops.index', compact('shops'));
@@ -43,8 +45,14 @@ class ShopController extends Controller
         $imageFile = $request->image; //一時保存
         if (!is_null($imageFile) && $imageFile->isValid()) {
             //画像が設置されていない場合　かつ 値がしっかり取れている場合なら
-            Storage::putFile('public/shops', $imageFile);
+            // Storage::putFile('public/shops', $imageFile);
             //のpublic/storage/shopsファルダが作られて自動で名前が付けられる
+            $fileName = uniqid(rand() . '_');
+            $extension = $imageFile->extension();
+            $fileNameToStore = $fileName . ' . ' . $extension;
+            $resizedImage = InterventionImage::make($imageFile)->resize(1920, 1080)->encode();
+
+            Storage::put('public/shops/' . $fileNameToStore, $resizedImage);
         }
         return redirect()->route('owner.shops.index');
     }
