@@ -24,7 +24,7 @@
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
 
-
+                                <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
                                 <form
                                     method="post"action="{{ route('admin.owners.update', ['owner' => $owner->id]) }}">
