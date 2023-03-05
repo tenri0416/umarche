@@ -46,7 +46,7 @@ class ShopController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
-            'information' => ['required', 'string', 'email', 'max:1000' . Shop::class],
+            'information' => ['required', 'string', 'max:1000'],
             'is_selling' => ['required'],
         ]);
         $imageFile = $request->image; //一時保存

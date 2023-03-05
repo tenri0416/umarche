@@ -12,6 +12,7 @@ use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\SampleController;
 use Illuminate\Support\Facades\Route;
 /*
 
@@ -36,6 +37,15 @@ Route::prefix('shop')
         Route::get('edit/{shop}', [ShopController::class, 'edit'])
             ->name('shops.edit');
         Route::post('update/{shop}', [ShopController::class, 'update'])->name('shops.update');
+    });
+
+//sample
+Route::prefix('sample')
+    ->middleware('auth:owners')->group(function () {
+        Route::get('index', [SampleController::class, 'index'])->name('sample.index'); //頭にprefixのshopがつく
+        Route::get('edit', [SampleController::class, 'edit'])
+            ->name('sample.edit');
+        Route::post('update', [SampleController::class, 'update'])->name('sample.update');
     });
 
 Route::get('dashboard', function () {

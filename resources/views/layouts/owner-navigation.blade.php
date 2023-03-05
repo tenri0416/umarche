@@ -20,6 +20,10 @@
                     <x-nav-link :href="route('owner.shops.index')" :active="request()->routeIs('owner.shops.index')">
                         店舗情報
                     </x-nav-link>
+                    <x-nav-link :href="route('owner.sample.index')" :active="request()->routeIs('owner.sample.index')"> {{-- routeIsの頭のownerはroute/owner.phpを指している --}}
+                        saple
+                    </x-nav-link>
+
 
                 </div>
             </div>
