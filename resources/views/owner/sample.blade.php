@@ -20,7 +20,7 @@
                             <p>{{ $name }}</p>
                         @endif
 
-                        <input type="file"accept="image/png,image/jpeg,image/jpg">
+                        <input type="file"name="file"accept="image/png,image/jpeg,image/jpg">
                         <button type="submit"
                             class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">保存する</button>
                     </form>

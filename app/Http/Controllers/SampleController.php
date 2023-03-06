@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\SampleRequest;
-
+use Illuminate\Support\Facades\Storage;
+use App\Services\SampleService;
 
 class SampleController extends Controller
 {
@@ -76,9 +77,17 @@ class SampleController extends Controller
         // dd($request);
         $name = $request->name;
 
+        $imageFile = $request->file; //一時保存
+        // dd($imageFile);
+        if (!is_null($imageFile) && $imageFile->isValid()) {
+            //画像が設置されていない場合　かつ 値がしっかり取れている場合なら
+            $fileNameToStore = SampleService::upload($imageFile, 'shops');
+            SampleService::eecho();
+        }
+
 
         // return redirect()->route('owner.sample.index', compact('name'));
-        return redirect()->route('owner.sample', compact('name'));
+        return redirect()->route('owner.sample.index', compact('name'));
     }
 
     /**
