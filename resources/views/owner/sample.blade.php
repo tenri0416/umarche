@@ -11,7 +11,6 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
                     <form method="post"action="{{ route('owner.sample.update') }}"enctype="multipart/form-data">
                         @csrf
                         <input type="text"name="name"placeholder="名前">
@@ -24,6 +23,15 @@
                         <button type="submit"
                             class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">保存する</button>
                     </form>
+                    <div>
+
+                        @if (empty($sample->filename))
+                            <img src="{{ asset('images/no_image.jpg') }}">
+                        @else
+                            <img src="{{ asset('storage/shops/' . $sample->filename) }}">
+                        @endif
+                    </div>
+
                 </div>
             </div>
         </div>

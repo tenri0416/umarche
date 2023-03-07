@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\SampleRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Services\SampleService;
+use App\Models\Sample;
 
 class SampleController extends Controller
 {
@@ -16,7 +17,9 @@ class SampleController extends Controller
      */
     public function index()
     {
-        return view('owner.sample');
+        $sample = new Sample();
+        $sample = $sample::latest()->first();
+        return view('owner.sample', compact('sample'));
     }
 
     /**
@@ -82,12 +85,19 @@ class SampleController extends Controller
         if (!is_null($imageFile) && $imageFile->isValid()) {
             //画像が設置されていない場合　かつ 値がしっかり取れている場合なら
             $fileNameToStore = SampleService::upload($imageFile, 'shops');
-            SampleService::eecho();
+            // SampleService::eecho();
         }
+        $sample = new Sample();
+
+        if (!is_null($imageFile) && $imageFile->isValid()) {
+            $sample->filename = $fileNameToStore;
+        }
+        $sample->save();
+
 
 
         // return redirect()->route('owner.sample.index', compact('name'));
-        return redirect()->route('owner.sample.index', compact('name'));
+        return redirect()->route('owner.sample.index')->with(['name' => $name, 'filename' => $fileNameToStore]);
     }
 
     /**
