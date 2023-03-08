@@ -13,6 +13,7 @@ use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\SampleController;
+use App\Http\Controllers\Owner\ImageController;
 use Illuminate\Support\Facades\Route;
 /*
 
@@ -30,7 +31,9 @@ Route::get('/', function () {
     return view('owner.welcome');
 });
 
-
+Route::resource('images', ImageController::class)
+    ->middleware(['auth:owner'])->except(['show']); //exceptは以外という意味 showメゾットを外す
+//middlewareをつけることによってadminで認証されていたら読み込む
 Route::prefix('shop')
     ->middleware('auth:owners')->group(function () {
         Route::get('index', [ShopController::class, 'index'])->name('shops.index'); //頭にprefixのshopがつく
