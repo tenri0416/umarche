@@ -32,7 +32,7 @@ Route::get('/', function () {
 });
 
 Route::resource('images', ImageController::class)
-    ->middleware(['auth:owner'])->except(['show']); //exceptは以外という意味 showメゾットを外す
+    ->middleware(['auth:owners'])->except(['show']); //exceptは以外という意味 showメゾットを外す
 //middlewareをつけることによってadminで認証されていたら読み込む
 Route::prefix('shop')
     ->middleware('auth:owners')->group(function () {
