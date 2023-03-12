@@ -9,11 +9,20 @@ class ImageService
 
     public static function upload($imageFile, $folderName)
     {
+
+
+
+        if (is_array($imageFile)) { //配列かどうかの処理
+            $file = $imageFile['image'];
+        } else {
+            $file = $imageFile;
+        }
         $fileName = uniqid(rand() . '_');
-        $extension = $imageFile->extension();
+        $extension = $file->extension(); //ectension()とはファイルの拡張子をとる
         $fileNameToStore = $fileName . ' . ' . $extension;
-        $resizedImage = InterventionImage::make($imageFile)->resize(1920, 1080)->encode();
+        $resizedImage = InterventionImage::make($file)->resize(1920, 1080)->encode();
         Storage::put('public/' . $folderName . "/" . $fileNameToStore, $resizedImage);
+
 
         return $fileNameToStore;
     }

@@ -19,7 +19,7 @@ class OwnerSeeder extends Seeder
         DB::table('owners')->insert([
             [
                 'name' => 'test',
-                'email' => 'test1@test',
+                'email' => 'test@test.com',
                 'password' => Hash::make('password123'), //パスワードを暗号化
                 'created_at' => '2021/01/01 11:11:11'
             ],

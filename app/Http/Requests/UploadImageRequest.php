@@ -25,7 +25,7 @@ class UploadImageRequest extends FormRequest
     {
         return [
             'image' => 'image|mimes:jpg,jpeg,png|max:2048',
-            'files.*.image' => 'image|mimes:jpg,jpeg,png|max:2048',
+            'files.*.image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ];
     }
     public function messages()
@@ -34,6 +34,33 @@ class UploadImageRequest extends FormRequest
             'image' => '指定されたファイルが画像ではありません。',
             'mines' => '指定された拡張子（jpg/jpeg/png）ではありません。',
             'max' => 'ファイルサイズは2MB以内にしてください。',
+            'required' => '入力必須です',
         ];
     }
+    // public function authorize()
+    // {
+    //     return true;
+    // }
+
+    // /**
+    //  * Get the validation rules that apply to the request.
+    //  *
+    //  * @return array
+    //  */
+    // public function rules()
+    // {
+    //     return [
+    //         'image' => 'image|mimes:jpg,jpeg,png|max:2048',
+    //         'files.*.image' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+    //     ];
+    // }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'image' => '指定されたファイルが画像ではありません。',
+    //         'mines' => '指定された拡張子（jpg/jpeg/png）ではありません。',
+    //         'max' => 'ファイルサイズは2MB以内にしてください。',
+    //     ];
+    // }
 }

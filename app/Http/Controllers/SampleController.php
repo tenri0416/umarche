@@ -79,7 +79,7 @@ class SampleController extends Controller
         // dd($validated);
         // dd($request);
         $name = $request->name;
-
+        dd(null);
         $imageFile = $request->file; //一時保存
         // dd($imageFile);
         if (!is_null($imageFile) && $imageFile->isValid()) {
